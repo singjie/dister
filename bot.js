@@ -51,12 +51,12 @@ irc.start = function(server, nick, channels, debug){
   				default:
             //load other plugins that matches the commands
             //plugin -> function(bot, message array);
+            //FIXME: This is not ideal, require plugin at every trigger
             fs.readdir( './plugins', function( err, files ) {
               files.forEach(function(file) {
                 if (path.extname(file) === '.js'){
                   var f = require( './plugins/'+file );
                   f.delegate(bot, from, to, message);
-                  return;
                 }
               });
             });
