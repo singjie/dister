@@ -1,7 +1,12 @@
-Start with:
-  node start.js
+dister IRC Bot on node.js
+=========================
+Introduction:
+-------------
+Start the bot with
+    node start.js
 
 Possibilities:
+--------------
 - readme common facts with bot - very helpful for newcomers
 	!readme hudson
 	!readme git
@@ -16,4 +21,5 @@ Possibilities:
 - !seen <nick>; <nick> was last seen on .... 
 - !remind x "Move Kiosk to all-hands area"; <nick>!!!!! - "Move Kiosk to all-hands area"
 - "Conference now... xxx dial in to: xxxx with PC 85......"
+- Conference rollcall; !conf; <nick> is now in conference; !conflist; list of attendees in conference;
 - lunch! - where to? !lunch; Thai!
