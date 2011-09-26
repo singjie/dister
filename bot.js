@@ -28,30 +28,25 @@ irc.start = function(server, nick, channels, debug){
   		if ( message.match(/dance/) ) {
   			setTimeout(function () { bot.say(to, "\u0001ACTION dances: :D\u0001") }, 1000);
   		}
-  		if ( message.charAt(0) === "!") {
+      if ( message.charAt(0) === "!") {
   			//bot commands
-  			message = message.slice(1).split(" ");
-  			switch (message[0]) {
-  				case "join":
-  				 bot.join(message[1]);
-  				break;
-  				case "part":
-  				  if (to === mainChannel && message.length === 1)
-  				 	  bot.say(to, 'Sorry, I can\'t leave this channel. Kill me if you insist.')
-  				  else
-  					  bot.part(message[1]);
-  				break;
-  				case "time":
-  				 bot.say(to, 'Time now is: ' + Date());
-  				break;
+        message = message.slice(1).split(" ");
+        switch (message[0]) {
+          case "join":
+            bot.join(message[1]);
+          break;
+          case "part":
+            if (to === mainChannel && message.length === 1)
+              bot.say(to, 'Sorry, I can\'t leave this channel. Kill me if you insist.')
+            else
+              bot.part(message[1]);
+            break;
+          case "time":
+            bot.say(to, 'Time now is: ' + Date());
+            break;
   				case "readme":
-  				 bot.say(to, 'README.blah blah @ ---')
-  				 break;
-  				case "deployment":
-	  			 bot.say(to, 'Deployment on devel is verson blah blah')
-  				 bot.say(to, 'Deployment on staging is verson blah blah')
-  				 bot.say(to, 'Deployment on production is verson blah blah')
-  				 break;
+            bot.say(to, 'README.blah blah @ ---');
+            break;
           case "nick":
             bot.send('NICK', message[1]);
             break;
