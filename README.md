@@ -3,6 +3,7 @@ dister IRC Bot on node.js
 Introduction:
 -------------
 Start the bot with
+
     node start.js
 
 Possibilities:
