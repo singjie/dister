@@ -1,9 +1,9 @@
-var irc = require('irc');
-var mainChannel = '#leesingjie';
-var bot = new irc.Client('irc.freenode.net', 'nicklsjbot', {
-	debug: true,
-	channels: [mainChannel],
-});
+var irc = require('irc'),
+    mainChannel = '#leesingjie',
+    bot = new irc.Client('irc.suse.de', 'nicklsjbot', {
+		            debug: true,
+            		channels: [mainChannel],
+              });
 
 bot.addListener('error', function(message) {
 	console.error('ERROR: %s: %s', message.command, message.args.join(' '));
@@ -65,32 +65,7 @@ bot.addListener('part', function(channel, who, reason) {
 	console.log('%s has left %s: %s', who, channel, reason);
 });
 bot.addListener('kick', function(channel, who, by, reason) {
-	console.log('%s was kicked from %s by %s: %s', who, channel, by, reason);
+  console.log('%s was kicked from %s by %s: %s', who, channel, by, reason);
 });
 
-http = require('http');
 
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.write('hello, i know nodejitsu.');
-  res.end();
-}).listen(8000);
-console.log('http server created');
-/*
-Possibilities:
-- readme common facts with bot - very helpful for newcomers
-	!readme hudson
-	!readme git
-- github integration
-	<nick> commited to .... http://github.com/SUSE/blahblah
-- deployment status, upon completing integration
-	Release 12930219231 has been deployed on .... 
-- bugzilla p1 (not sure if implementable)
-	<blah blah> updated P1 bug... 
-	!bnc#12321 ; http://bugzilla....url [FIXED/OPEN]
-- leave matters, !avail <nick>; <nick> is currently on leave till - xxxx
-- !seen <nick>; <nick> was last seen on .... 
-- !remind x "Move Kiosk to all-hands area"; <nick>!!!!! - "Move Kiosk to all-hands area"
-- "Conference now... xxx dial in to: xxxx with PC 85......"
-- lunch! - where to? !lunch; Thai!
-*/
