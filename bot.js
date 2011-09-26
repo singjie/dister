@@ -1,5 +1,3 @@
-
-
 var irc = exports;
 
 irc.start = function(server, nick, channels, debug){
