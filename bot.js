@@ -8,6 +8,8 @@ irc.start = function(server, nick, channels, debug){
 
   var bot = new ircLib.Client(server, nick, {
         debug: true,
+        userName: 'dister',
+        realName: 'dister bot',
         channels: channels,
         });
 
