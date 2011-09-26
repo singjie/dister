@@ -32,27 +32,14 @@ irc.start = function(server, nick, channels, debug){
   			//bot commands
         message = message.slice(1).split(" ");
         switch (message[0]) {
-          case "join":
-            bot.join(message[1]);
-          break;
-          case "part":
-            if (to === mainChannel && message.length === 1)
-              bot.say(to, 'Sorry, I can\'t leave this channel. Kill me if you insist.')
-            else
-              bot.part(message[1]);
-            break;
           case "time":
             bot.say(to, 'Time now is: ' + Date());
             break;
   				case "readme":
             bot.say(to, 'README.blah blah @ ---');
             break;
-          case "nick":
-            bot.send('NICK', message[1]);
-            break;
   				default:
             //load other plugins that matches the commands
-            //plugin -> function(bot, message array);
             //FIXME: This is not ideal, require plugin at every trigger
             fs.readdir( './plugins', function( err, files ) {
               files.forEach(function(file) {
