@@ -49,6 +49,9 @@ irc.start = function(){
   				 bot.say(to, 'Deployment on staging is verson blah blah')
   				 bot.say(to, 'Deployment on production is verson blah blah')
   				 break;
+          case "nick":
+            bot.send('NICK', message[1]);
+            break;
   				default:
   				//load other plugins that matches the commands
   				console.log(message[0]);
