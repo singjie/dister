@@ -3,6 +3,8 @@
 var irc = exports;
 
 irc.start = function(server, nick, channels, debug){
+  var fs = require('fs'),
+      path = require('path');
   var ircLib = require('irc'),
       mainChannel = '#leesingjie';
 
@@ -54,8 +56,18 @@ irc.start = function(server, nick, channels, debug){
             bot.send('NICK', message[1]);
             break;
   				default:
-  				//load other plugins that matches the commands
-  				console.log(message[0]);
+            //load other plugins that matches the commands
+            //plugin -> function(bot, message array);
+            fs.readdir( './plugins', function( err, files ) {
+              files.forEach(function(file) {
+                if (path.extname(file) === '.js'){
+                  var f = require( './plugins/'+file );
+                  f.delegate(bot, from, to, message);
+                  return;
+                }
+              });
+            });
+            console.log(message[0]);
   				break;
   			}
   		}
