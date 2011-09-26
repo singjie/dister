@@ -1,13 +1,14 @@
 
+
 var irc = exports;
 
-irc.start = function(){
+irc.start = function(server, nick, channels, debug){
   var ircLib = require('irc'),
       mainChannel = '#leesingjie';
 
-  var bot = new ircLib.Client('irc.suse.de', 'nicklsjbot', {
+  var bot = new ircLib.Client(server, nick, {
         debug: true,
-        channels: [mainChannel],
+        channels: channels,
         });
 
   bot.addListener('error', function(message) {

@@ -5,5 +5,6 @@ var bot = require('./bot.js');
 var web = require('./web.js');
 
 repl.start();
-bot.start();
+//server, nick, channel array
+bot.start('irc.suse.de', 'nicklsjbot', ['#leesingjie']);
 web.start();
