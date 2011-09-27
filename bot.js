@@ -2,8 +2,9 @@ var irc = exports;
 
 irc.start = function(server, nick, channels, debug){
   var fs = require('fs'),
-      path = require('path');
-  var ircLib = require('irc'),
+      path = require('path'),
+      ircLib = require('irc'),
+      git = require('./github.js'),
       mainChannel = '#leesingjie';
 
   var bot = new ircLib.Client(server, nick, {
@@ -13,6 +14,7 @@ irc.start = function(server, nick, channels, debug){
         channels: channels,
         });
 
+  var github = new git.Github(bot, mainChannel);
   bot.addListener('error', function(message) {
 	  console.error('ERROR: %s: %s', message.command, message.args.join(' '));
   });
