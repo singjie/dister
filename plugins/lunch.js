@@ -1,15 +1,12 @@
 // Lunch commands with mongodb
-var Db = require('mongodb').Db,
-    Connection = require('mongodb').Connection,
-    Server = require('mongodb').Server;
+var db = require ('./../lib/db.js');
 
 var f = exports
 f.delegate = function(bot, from, to, message){
   switch(message[0]){
     case "lunch":
       if (message.length > 1){
-        client = new Db('ircdb', new Server("127.0.0.1", 27017, {}));
-        client.open(function(err, db){
+        new db.Database(function(err, db){
           db.collection('lunch', function (err, collection) {
             collection.insert({"location" : message[1]}, function(err, docs) {
               bot.say(to, 'Added ' + message[1] + ' to my brain');
@@ -21,8 +18,7 @@ f.delegate = function(bot, from, to, message){
       }
       else{
         //FIXME: opening multiple connections. crazy
-        client = new Db('ircdb', new Server("127.0.0.1", 27017, {}));
-        client.open(function(err, db){
+        new db.Database(function(err, db){
           db.collection('lunch', function (err, collection) {
             collection.find(function(err, cursor) {
               cursor.toArray(function(err, docs) {
