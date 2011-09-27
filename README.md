@@ -11,8 +11,6 @@ Todo - Possibilities:
 - readme common facts with bot - very helpful for newcomers
 	!readme hudson
 	!readme git
-- github integration
-	<nick> commited to .... http://github.com/SUSE/blahblah
 - deployment status, upon completing integration
 	Release 12930219231 has been deployed on .... 
 - bugzilla p1 (not sure if implementable)
@@ -23,4 +21,12 @@ Todo - Possibilities:
 - !remind x "Move Kiosk to all-hands area"; <nick>!!!!! - "Move Kiosk to all-hands area"
 - "Conference now... xxx dial in to: xxxx with PC 85......"
 - Conference rollcall; !conf; <nick> is now in conference; !conflist; list of attendees in conference;
-- lunch! - where to? !lunch; Thai!
+- simple AI for !lunch
+
+Implemented:
+------------
+- !lunch [location]
+  - !lunch - generates a random lunch location based on the added location
+  - !lunch <location> - adds a location for lunch
+- Github integration
+  - Echo out commits immediately (or almost immediately)
