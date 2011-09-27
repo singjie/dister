@@ -6,8 +6,8 @@ Start the bot with
 
     node start.js
 
-Possibilities:
---------------
+Todo - Possibilities:
+--------------------
 - readme common facts with bot - very helpful for newcomers
 	!readme hudson
 	!readme git
