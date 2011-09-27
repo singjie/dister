@@ -1,0 +1,12 @@
+{
+  "irc": {
+    "server" : "irc.suse.de"
+    "nick" : "nicklsjbot"
+    "mainChannel" : "#leesingjie"
+  }
+  "github": {
+    "url" : "/api/v2/json/commits/list/singjie/dister/master"
+    "username" : "singjie"
+    "token" : "12345"
+  }
+}
