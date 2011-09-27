@@ -1,7 +1,7 @@
 // Lunch commands with mongodb
 var Db = require('mongodb').Db,
-  Connection = require('mongodb').Connection,
-  Server = require('mongodb').Server;
+    Connection = require('mongodb').Connection,
+    Server = require('mongodb').Server;
 
 var f = exports
 f.delegate = function(bot, from, to, message){
