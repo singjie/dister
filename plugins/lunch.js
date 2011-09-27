@@ -9,7 +9,7 @@ f.delegate = function(bot, from, to, message){
         new db.Database(function(err, db){
           db.collection('lunch', function (err, collection) {
             collection.insert({"location" : message[1]}, function(err, docs) {
-              bot.say(to, 'Added ' + message[1] + ' to my brain');
+              bot.say(to, 'Added ' + message[1] + ' to my brain.');
               console.log('location : ' + message[1]);
               client.close();
             });
@@ -26,7 +26,7 @@ f.delegate = function(bot, from, to, message){
                 var doc = docs[rand];
                 if(doc != null) {
                   console.log(doc.location);
-                  bot.say(to, 'Lunch at: ' + doc.location);
+                  bot.say(to, from +', lunch at ' + doc.location + ' sounds great!');
                 }
               });
             });
