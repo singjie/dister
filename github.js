@@ -17,6 +17,7 @@ function Github(bot, to){
       Connection = require('mongodb').Connection,
       Server = require('mongodb').Server;
 
+  var commitsInDatabase={};
   var checkData = function(res) {
     var data = "";
     console.log("Got response: " + res.statusCode);
@@ -31,7 +32,10 @@ function Github(bot, to){
       var json = JSON.parse(data);
       console.log(json.commits.length);
       client = new Db('testdata', new Server("127.0.0.1", 27017, {}));
+
       //finish receiving
+      //check if db array is empty
+        //if not empty, compare.
       //query db with findOne()
       //compare latest from db with latest from findOne()
       //if findOne() not same with db
@@ -62,7 +66,12 @@ function Github(bot, to){
                     });
                     break;
                   }
-                  bot.say(to, '[Commit: ' + json.commits[i].id + ']: ' + json.commits[i].message);
+                  var subMessage = json.commits[i].message;
+                  if(subMessage.length > 50){
+                    subMessage = subMessage.substring(0,49);
+                  }
+
+                  bot.say(to, '[Commit: ' + json.commits[i].id.substring(0,6) + ' By: ' + json.commits[i].committer.name + ']: ' + subMessage);
                 }
               }
               else {
