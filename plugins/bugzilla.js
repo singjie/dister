@@ -50,6 +50,7 @@ f.delegate = function(bot, from, to, message){
             console.log(csvArray.length + 'bugs');
             //bot.say(to, csvArray.length + ' bugs in Bugzilla.');
             var i=1;
+            var numberOfSay = 0;
             for (i=1;i<csvArray.length;i++){
               var csvRow = csvArray[i];
               var bugPriority = csvRow[2].substring(1,2);
@@ -57,8 +58,16 @@ f.delegate = function(bot, from, to, message){
                 var bugID = csvRow[0];
                 var bugDesc = csvRow[7];
                 var bugAssignee = csvRow[4];
-                var comment = '[' + bugAssignee + ']-(P' + bugPriority  + ') ' + bugDesc + ' => https://bugzilla.novell.com/show_bug.cgi?id=' + bugID;
-                bot.say(to, comment);
+                var comment = '[' + bugAssignee + ']-(P' + bugPriority  + ') ';
+                if(numberOfSay <= 5){
+                  comment += bugDesc + ' => https://bugzilla.novell.com/show_bug.cgi?id=' + bugID;
+                  bot.say(to, comment);
+                  numberOfSay++;
+                } else {
+                  comment += '... and many more. Full listing at: https://bugzilla.novell.com' + query.replace('ctype=csv&', '');
+                  bot.say(to, comment);
+                  break;
+                }
               }
               else if (bugPriority > message[0][4]){
                 //exceeds priority
@@ -68,7 +77,6 @@ f.delegate = function(bot, from, to, message){
           } else {
             bot.say(to, res.statusCode + ' response from Bugzilla.');
           }
-          bot.say(to, "End");
         });
       };
       bot.say(to, 'Checking with Bugzilla...');
