@@ -3,6 +3,8 @@ exports.Github = Github;
 function Github(bot, to){
   var http = require('http');
   var fs = require('fs');
+  var db = require('./lib/db.js');
+  var dbOpen = new db.Database();
   var config = JSON.parse(fs.readFileSync('./config.json'));
   var username = config.github.username;
   var token = config.github.token;
@@ -13,10 +15,6 @@ function Github(bot, to){
     path: config.github.url,
     port: 80
   };
-  var Db = require('mongodb').Db,
-      Connection = require('mongodb').Connection,
-      Server = require('mongodb').Server;
-
   var commitsInDatabase={};
   var checkData = function(res) {
     var data = "";
@@ -31,8 +29,6 @@ function Github(bot, to){
     res.on('end', function(){
       var json = JSON.parse(data);
       console.log(json.commits.length);
-      client = new Db('testdata', new Server("127.0.0.1", 27017, {}));
-
       //finish receiving
       //check if db array is empty
         //if not empty, compare.
@@ -42,13 +38,11 @@ function Github(bot, to){
         //use findOne() doc to look from latest
           //strip remaining, and add to db
           //and broadcast
-      client.open(function(err, db){
-        db.collection('res', function(err, collection){
+        dbOpen.collection('res', function(err, collection){
           collection.find({}, {'limit':1, 'sort': [['committed_date', 'desc']]}).toArray(function(err, docs){
               if(docs.length == 0){
                 collection.insert(json.commits, function(err, docs){
                   console.log('DB initialized');
-                  client.close();
                 });
               }
               else if(docs[0].id !== json.commits[0].id){
@@ -61,7 +55,6 @@ function Github(bot, to){
                     json.commits.splice(i, json.commits.length-i);
                     console.log(json.commits);
                     collection.insert(json.commits, function(err, docs){
-                      client.close();
                       console.log("Inserted new commit into DB");
                     });
                     break;
@@ -74,13 +67,9 @@ function Github(bot, to){
                   bot.say(to, '[Commit: ' + json.commits[i].id.substring(0,6) + ' By: ' + json.commits[i].committer.name + ']: ' + subMessage);
                 }
               }
-              else {
-                client.close();
-              }
               setTimeout(getHTTP, 5000);
           });
         });
-      });
     })
   }
   var getHTTP = function(){
