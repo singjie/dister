@@ -13,9 +13,6 @@ Todo - Possibilities:
 	!readme git
 - deployment status, upon completing integration
 	Release 12930219231 has been deployed on .... 
-- bugzilla p1 (not sure if implementable)
-	<blah blah> updated P1 bug... 
-	!bnc#12321 ; http://bugzilla....url [FIXED/OPEN]
 - leave matters, !avail <nick>; <nick> is currently on leave till - xxxx
 - !seen <nick>; <nick> was last seen on .... 
 - !remind x "Move Kiosk to all-hands area"; <nick>!!!!! - "Move Kiosk to all-hands area"
@@ -25,12 +22,18 @@ Todo - Possibilities:
 
 Implemented:
 ------------
-- !bug <username>
-  - Returns non-fixed bugs from Bugzilla, which are assigned to <username>
-- !bugp1
-  - !bugp1 - Returns non-fixed P1 bugs
-- !lunch [location]
-  - !lunch - generates a random lunch location based on the added location
-  - !lunch <location> - adds a location for lunch
-- Github integration
-  - Echo out commits immediately (or almost immediately)
+#### Bugzilla
+Returns non-fixed bugs from Bugzilla, assigned to username:
+
+    !bug <username>
+Returns non-fixed P1 bugs
+
+    !bugp1
+#### Lunch
+Generates a random lunch location based on the added location or adds a new
+location
+
+    !lunch [location]
+
+#### Github
+Echo out commits immediately (or almost immediately)
