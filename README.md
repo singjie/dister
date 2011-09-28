@@ -25,6 +25,10 @@ Todo - Possibilities:
 
 Implemented:
 ------------
+- !bug <username>
+  - Returns non-fixed bugs from Bugzilla, which are assigned to <username>
+- !bugp1
+  - !bugp1 - Returns non-fixed P1 bugs
 - !lunch [location]
   - !lunch - generates a random lunch location based on the added location
   - !lunch <location> - adds a location for lunch
