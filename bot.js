@@ -5,6 +5,7 @@ irc.start = function(server, nick, channels){
       path = require('path'),
       ircLib = require('irc'),
       git = require('./github.js'),
+      time = require('./timer.js'),
       mainChannel = '#leesingjie';
 
   var bot = new ircLib.Client(server, nick, {
@@ -15,6 +16,8 @@ irc.start = function(server, nick, channels){
         });
 
   var github = new git.Github(bot, mainChannel);
+  var timer = new time.Timer(bot);
+
   bot.addListener('error', function(message) {
 	  console.error('ERROR: %s: %s', message.command, message.args.join(' '));
   });
