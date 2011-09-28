@@ -1,6 +1,6 @@
 var irc = exports;
 
-irc.start = function(server, nick, channels, debug){
+irc.start = function(server, nick, channels){
   var fs = require('fs'),
       path = require('path'),
       ircLib = require('irc'),
