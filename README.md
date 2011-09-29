@@ -22,6 +22,11 @@ Returns non-fixed bugs from Bugzilla, for P1|2|3|4, assigned to username:
 
     !bugs [PX] [username]
 
+## Hudson
+Checks Hudson build status from IRC client:
+
+    !hudson [staging|production|master]
+
 ## Food
 Returns food suggestions:
 
