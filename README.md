@@ -20,7 +20,7 @@ Start the bot with
 ## Bugzilla
 Returns non-fixed bugs from Bugzilla, for P1|2|3|4, assigned to username:
 
-    !bugs [PX] [username]
+    !bugs [P1|P2|P3|P4] [username]
 
 ## Hudson
 Checks Hudson build status from IRC client:
