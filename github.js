@@ -61,7 +61,7 @@ function Github(bot, to){
                   }
                   var subMessage = json.commits[i].message;
                   if(subMessage.length > 50){
-                    subMessage = subMessage.substring(0,49);
+                    subMessage = subMessage.substring(0,49) + '...';
                   }
 
                   bot.say(to, '[Commit: ' + json.commits[i].id.substring(0,6) + ' By: ' + json.commits[i].committer.name + ']: ' + subMessage);
