@@ -62,7 +62,12 @@ function Github(bot, to){
                     subMessage = subMessage.substring(0,49) + '...';
                   }
 
-                  bot.say(to, '[Commit: ' + json.commits[i].id.substring(0,6) + ' By: ' + json.commits[i].committer.name + ']: ' + subMessage);
+                  bot.say(to, 'Commit: ' +
+                    json.commits[i].id.substring(0,7) + ', ' +
+                    json.commits[i].committer.name + ', ' +
+                    json.commits[i].committed_date + ' - ' +
+                    subMessage);
+                  bot.say(to, 'URL: https://github.com' + json.commits[i].url);
                 }
               }
               setTimeout(getHTTP, 5000);
