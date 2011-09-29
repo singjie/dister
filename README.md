@@ -34,6 +34,18 @@ Returns non-fixed bugs from Bugzilla, for P1|2|3|4, assigned to username:
 
     !bugs [P1|P2|P3|P4] [username]
 
+Eg. Search for all bugs assigned to sjlee
+
+    !bugs sjlee
+
+Eg. Search for all P1 bugs assigned to sjlee
+
+    !bugs P1 sjlee
+
+Eg. Search for all P1 bugs
+
+    !bugs P1
+
 ## Hudson
 Checks Hudson build status from IRC client:
 
