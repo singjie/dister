@@ -33,10 +33,21 @@ Returns food suggestions.
     !food
 
 #### Github
-Echo out commits immediately (or almost immediately)
+Notify of new commits immediately (or almost immediately)
 
-#### Cron
-Work in progress
+#### Events
+Handle messages to be broadcasted within a certain time, with format similar to
+cron
+
+    !event <day> <hour> <min> <sec> <times> <message>
+
+eg. This will notify us at our conference time, Tuesday, 17:00:00 indefinitely.
+
+    !event 2 17 0 0 -1 "Conference now!"
+
+To check for existing events
+
+    !events
 
 #### Lunch (Deprecated)
 Generates a random lunch location based on the added location or adds a new
