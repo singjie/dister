@@ -26,6 +26,9 @@ f.delegate = function(bot, from, to, message){
     case "nick":
       bot.send('NICK', message[1]);
       break;
+    case "say":
+      bot.say(message[1], message[2]);
+      break;
   }
 };
 
