@@ -34,12 +34,11 @@ f.delegate = function(bot, from, to, message){
         }
       }
     case "bugp1":
+      //FIXME: crap here.
       var https = require('https');
       var fs = require('fs');
       var config = JSON.parse(fs.readFileSync('./config.json'));
-      var username = config.bugzilla.username;
-      var password = config.bugzilla.password;
-      var auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
+      var auth = 'Basic ' + config.bugzilla.user_pass_base64;
       if(!query){
         //Not coming from !bugs
         var query = config.bugzilla.default_query;
