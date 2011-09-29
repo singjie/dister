@@ -23,17 +23,25 @@ Todo - Possibilities:
 Implemented:
 ------------
 #### Bugzilla
-Returns non-fixed bugs from Bugzilla, assigned to username:
+Returns non-fixed bugs from Bugzilla, for P1|2|3|4, assigned to username:
 
-    !bug <username>
-Returns non-fixed P1 bugs
+    !bugs [PX] [username]
 
-    !bugp1
-#### Lunch
+#### Food
+Returns food suggestions.
+
+    !food
+
+#### Github
+Echo out commits immediately (or almost immediately)
+
+#### Cron
+Work in progress
+
+#### Lunch (Deprecated)
 Generates a random lunch location based on the added location or adds a new
 location
 
     !lunch [location]
 
-#### Github
-Echo out commits immediately (or almost immediately)
+
