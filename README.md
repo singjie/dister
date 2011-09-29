@@ -13,10 +13,22 @@ Start the bot with
 	Release 12930219231 has been deployed on .... 
 - leave matters, !avail <nick>; <nick> is currently on leave till - xxxx
 - !seen <nick>; <nick> was last seen on .... 
-- Conference rollcall; !conf; <nick> is now in conference; !conflist; list of attendees in conference;
 - simple AI for !lunch
 
 #Implemented:
+## Attend
+Keeps a list of those attending certain events:
+
+    !attend <event> [list]
+
+Eg. Team meeting on 27th Sept 2011:
+
+    !attend 27092011
+
+The list of those attended:
+
+    !attend 27092011 list
+
 ## Bugzilla
 Returns non-fixed bugs from Bugzilla, for P1|2|3|4, assigned to username:
 
