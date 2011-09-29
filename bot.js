@@ -54,7 +54,6 @@ irc.start = function(server, nick, channels){
                 }
               });
             });
-            console.log(message[0]);
   				break;
   			}
   		}
