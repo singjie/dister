@@ -14,7 +14,7 @@ f.delegate = function(bot, from, to, message){
     case "part":
       if (message.length === 1)
         bot.part(to);
-      else
+      else{
         var channel = '';
         if(message[1][0] === '#'){
           channel = message[1];
@@ -22,6 +22,7 @@ f.delegate = function(bot, from, to, message){
           channel = '#'+message[1];
         }
         bot.part(channel);
+      }
       break;
     case "nick":
       bot.send('NICK', message[1]);
