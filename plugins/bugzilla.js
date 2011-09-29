@@ -1,7 +1,7 @@
 var f = exports
 f.delegate = function(bot, from, to, message){
   switch(message[0]){
-    case "bug":
+    case "bugs":
       var fs = require('fs');
       var config = JSON.parse(fs.readFileSync('./config.json'));
       var query = '';
@@ -54,7 +54,8 @@ f.delegate = function(bot, from, to, message){
             for (i=1;i<csvArray.length;i++){
               var csvRow = csvArray[i];
               var bugPriority = csvRow[2].substring(1,2);
-              if (message[0].length<4 || bugPriority === message[0][4]){
+              if (message[0].length<=4 || bugPriority === message[0][4]){
+                //if !bugs || !bugp1 then print out bugs
                 var bugID = csvRow[0];
                 var bugDesc = csvRow[7];
                 var bugAssignee = csvRow[4];
