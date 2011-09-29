@@ -46,6 +46,11 @@ Eg. Search for all P1 bugs
 
     !bugs P1
 
+## Commands
+Parses this file and echos to the user with all the implemented commands
+
+    !commands
+
 ## Events
 Handle messages to be broadcasted within a certain time, with format similar to
 cron:
