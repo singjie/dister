@@ -46,19 +46,6 @@ Eg. Search for all P1 bugs
 
     !bugs P1
 
-## Hudson
-Checks Hudson build status from IRC client:
-
-    !hudson [staging|production|master]
-
-## Food
-Returns food suggestions:
-
-    !food
-
-## Github
-Notify of new commits immediately (or almost immediately)
-
 ## Events
 Handle messages to be broadcasted within a certain time, with format similar to
 cron:
@@ -72,6 +59,19 @@ eg. This will notify us at our conference time, Tuesday, 17:00:00, indefinitely:
 To check for existing events:
 
     !events
+
+## Food
+Returns food suggestions:
+
+    !food
+
+## Github
+Notify of new commits immediately (or almost immediately)
+
+## Hudson
+Checks Hudson build status from IRC client:
+
+    !hudson [staging|production|master]
 
 ## Lunch (Deprecated)
 Generates a random lunch location based on the added location or adds a new
