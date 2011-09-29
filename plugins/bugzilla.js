@@ -4,9 +4,34 @@ f.delegate = function(bot, from, to, message){
     case "bugs":
       var fs = require('fs');
       var config = JSON.parse(fs.readFileSync('./config.json'));
-      var query = '';
-      if (message.length > 1){
-        query = config.bugzilla.default_query + '&assigned_to=' + message[1] + '@suse.com';
+      var query = config.bugzilla.default_query;
+      var priorityPhrase = '';
+      var assignee;
+      if (message[1]){
+        switch(message[1][1]){
+          //!bugs pX
+          case '0':
+            if(!priorityPhrase) priorityPhrase = 'Crit+Sit';
+          case '1':
+            if(!priorityPhrase) priorityPhrase = 'Urgent';
+          case '2':
+            if(!priorityPhrase) priorityPhrase = 'High';
+          case '3':
+            if(!priorityPhrase) priorityPhrase = 'Medium';
+          case '4':
+            if(!priorityPhrase) priorityPhrase = 'Low';
+            query += '&priority=P' + message[1][1] + '+-+' + priorityPhrase;
+          default:
+            //!bugs sjlee
+            if(!priorityPhrase || message[2]){
+              assignee = message[1];
+              if(message[2]) {
+                //came from !bugs pX <additional>
+                assignee = message[2];
+              }
+              query += '&assigned_to=' + assignee + '@suse.com';
+            }
+        }
       }
     case "bugp1":
       var https = require('https');
@@ -16,6 +41,7 @@ f.delegate = function(bot, from, to, message){
       var password = config.bugzilla.password;
       var auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
       if(!query){
+        //Not coming from !bugs
         var query = config.bugzilla.default_query;
         if (message.length > 1){
           query = config.bugzilla.query;
@@ -47,7 +73,13 @@ f.delegate = function(bot, from, to, message){
             //var json = JSON.parse(data);
             var csvToArray = require('./../lib/csv.js').CSVToArray;
             var csvArray = csvToArray(data, ',');
-            console.log(csvArray.length + 'bugs');
+            var csvSize = (csvArray.length)-1; //first line is the columns
+            console.log('[Bugzilla]: Found ' + csvSize + ' bugs.');
+            if(!csvSize){
+              //csvSize === 0
+              bot.say(to, 'What!? No bugs found!');
+              return;
+            }
             //bot.say(to, csvArray.length + ' bugs in Bugzilla.');
             var i=1;
             var numberOfSay = 0;
@@ -65,8 +97,9 @@ f.delegate = function(bot, from, to, message){
                   bot.say(to, comment);
                   numberOfSay++;
                 } else {
-                  comment += '... and many more. Full listing at: https://bugzilla.novell.com' + query.replace('ctype=csv&', '');
+                  comment += '... and many more.';
                   bot.say(to, comment);
+                  bot.say(to, 'Full listing at: https://bugzilla.novell.com' + query.replace('ctype=csv&', ''));
                   break;
                 }
               }
@@ -76,11 +109,17 @@ f.delegate = function(bot, from, to, message){
               }
             }
           } else {
+            //statusCode !== 200
             bot.say(to, res.statusCode + ' response from Bugzilla.');
           }
         });
       };
-      bot.say(to, 'Checking with Bugzilla...');
+      var checkingMessage = 'Checking...';
+      if (priorityPhrase)
+        checkingMessage += ' P' + message[1][1] + ' - ' + priorityPhrase + ' bugs.';
+      if (assignee)
+        checkingMessage += ' Assigned to ' + assignee + '@suse.com.'
+      bot.say(to, checkingMessage);
       https.get(options, checkData);
       break;
    }
