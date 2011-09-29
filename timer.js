@@ -8,10 +8,10 @@ function Timer(bot){
     dbOpen.collection('events', function (err, collection) {
       collection.find({
         "$and" : [
-          {"$or" : [{"day": now.getDay()}, {"day" : "*"}]},
-          {"$or" : [{"hour": now.getHours()}, {"hour" : "*"}]},
-          {"$or" : [{"minute": now.getMinutes()}, {"minute" : "*"}]},
-          {"$or" : [{"second": now.getSeconds()}, {"second" : "*"}]}
+          {"$or" : [{"day": now.getDay().toString()}, {"day" : "*"}]},
+          {"$or" : [{"hour": now.getHours().toString()}, {"hour" : "*"}]},
+          {"$or" : [{"minute": now.getMinutes().toString()}, {"minute" : "*"}]},
+          {"$or" : [{"second": now.getSeconds().toString()}, {"second" : "*"}]}
           ]
         },
         function(err, cursor) {
