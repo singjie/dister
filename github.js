@@ -18,7 +18,6 @@ function Github(bot, to){
   var commitsInDatabase={};
   var checkData = function(res) {
     var data = "";
-    console.log("Got response: " + res.statusCode);
     res.setEncoding('utf8');
     res.on('data', function (chunk) {
       data += chunk;
@@ -28,7 +27,6 @@ function Github(bot, to){
     });
     res.on('end', function(){
       var json = JSON.parse(data);
-      console.log(json.commits.length);
       //finish receiving
       //check if db array is empty
         //if not empty, compare.
