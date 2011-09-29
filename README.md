@@ -15,8 +15,6 @@ Todo - Possibilities:
 	Release 12930219231 has been deployed on .... 
 - leave matters, !avail <nick>; <nick> is currently on leave till - xxxx
 - !seen <nick>; <nick> was last seen on .... 
-- !remind x "Move Kiosk to all-hands area"; <nick>!!!!! - "Move Kiosk to all-hands area"
-- "Conference now... xxx dial in to: xxxx with PC 85......"
 - Conference rollcall; !conf; <nick> is now in conference; !conflist; list of attendees in conference;
 - simple AI for !lunch
 
@@ -28,7 +26,7 @@ Returns non-fixed bugs from Bugzilla, for P1|2|3|4, assigned to username:
     !bugs [PX] [username]
 
 #### Food
-Returns food suggestions.
+Returns food suggestions:
 
     !food
 
@@ -37,15 +35,15 @@ Notify of new commits immediately (or almost immediately)
 
 #### Events
 Handle messages to be broadcasted within a certain time, with format similar to
-cron
+cron:
 
     !event <day> <hour> <min> <sec> <times> <message>
 
-eg. This will notify us at our conference time, Tuesday, 17:00:00 indefinitely.
+eg. This will notify us at our conference time, Tuesday, 17:00:00, indefinitely:
 
     !event 2 17 0 0 -1 "Conference now!"
 
-To check for existing events
+To check for existing events:
 
     !events
 
