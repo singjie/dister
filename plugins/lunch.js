@@ -14,7 +14,6 @@ f.delegate = function(bot, from, to, message){
         });
       }
       else{
-        //FIXME: opening multiple connections. crazy
         dbOpen.collection('lunch', function (err, collection) {
           collection.find(function(err, cursor) {
             cursor.toArray(function(err, docs) {
