@@ -11,7 +11,7 @@ f.delegate = function(bot, from, to, message){
         if(messages[i] !== ''){
           setTimeout(function(line){
               bot.say(from, line);
-          }, i*350+100, messages[i]);
+          }, i*400+100, messages[i]);
         }
       }
       break;
