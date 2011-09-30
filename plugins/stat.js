@@ -1,6 +1,6 @@
 exports.delegate = function(bot, from, to, message){
   switch(message[0]){
-    case "top":
+    case "stats":
       var fs = require('fs');
       var config = JSON.parse(fs.readFileSync('./config.json')).topinfo;
       var exec  = require('child_process').exec,

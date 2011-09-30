@@ -78,10 +78,10 @@ Checks Hudson build status from IRC client:
 
     !hudson [staging|production|master]
 
-## Top
+## Stats
 Shows system stats of server nodes:
 
-    !top <nodeXX>
+    !stats <nodeXX>
 
 ## Lunch (Deprecated)
 Generates a random lunch location based on the added location or adds a new
