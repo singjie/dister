@@ -7,6 +7,6 @@ var db = require('./lib/db.js');
 var sj = new db.Database;
 //server, nick, channel array
 setTimeout(function(){
-  bot.start('irc.suse.de', 'nicklsjbot', ['#leesingjie']);
+  bot.start();
   web.start();
   }, 300);

@@ -1,21 +1,21 @@
 var irc = exports;
 
-irc.start = function(server, nick, channels){
+irc.start = function(){
   var fs = require('fs'),
       path = require('path'),
       ircLib = require('irc'),
       git = require('./github.js'),
       time = require('./timer.js'),
-      mainChannel = '#leesingjie';
+      config = JSON.parse(fs.readFileSync('./config.json')).irc;
 
-  var bot = new ircLib.Client(server, nick, {
+  var bot = new ircLib.Client(config.server, config.nick, {
         debug: true,
         userName: 'dister',
         realName: 'dister bot',
-        channels: channels,
+        channels: config.channels.split(', '),
         });
 
-  var github = new git.Github(bot, mainChannel);
+  var github = new git.Github(bot, config.channels.split(', ')[0]);
   var timer = new time.Timer(bot);
 
   bot.addListener('error', function(message) {
