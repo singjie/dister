@@ -1,6 +1,4 @@
-var irc = exports;
-
-irc.start = function(){
+exports.start = function(){
   var fs = require('fs'),
       path = require('path'),
       ircLib = require('irc'),
