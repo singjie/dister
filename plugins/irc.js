@@ -1,6 +1,5 @@
 // IRC Commands - JOIN, PART, NICK... etc.
-var f = exports
-f.delegate = function(bot, from, to, message){
+exports.delegate = function(bot, from, to, message){
   switch(message[0]){
     case "join":
       var channel = '';

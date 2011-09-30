@@ -1,7 +1,6 @@
 var db = require ('./../lib/db.js');
 var dbOpen = db.Database();
-var f = exports
-f.delegate = function(bot, from, to, message){
+exports.delegate = function(bot, from, to, message){
   switch(message[0]){
     case "attend":
       if (message[1] && !message[2]){

@@ -1,5 +1,4 @@
-var f = exports
-f.delegate = function(bot, from, to, message){
+exports.delegate = function(bot, from, to, message){
   switch(message[0]){
     case "bugs":
       var fs = require('fs');

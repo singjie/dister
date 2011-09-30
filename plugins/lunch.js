@@ -1,8 +1,7 @@
 // Lunch commands with mongodb
 var db = require ('./../lib/db.js');
 var dbOpen = db.Database();
-var f = exports
-f.delegate = function(bot, from, to, message){
+exports.delegate = function(bot, from, to, message){
   switch(message[0]){
     case "lunch":
       if (message.length > 1){
